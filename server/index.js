@@ -10,11 +10,14 @@ const PORT = 3501;
 const MONGO_URL = "mongodb://localhost:27017/";
 const MongoClient = require('mongodb').MongoClient;
 
-//********** Routes **********
+//********** ROUTES **********
 
-app.get('/', (request, response) => {
-    response.json({"status": "ok"});
-});
+app.route('/')
+    .get( (request, response) => {
+        response.json({"status": "ok"});
+    });
+
+// ********** APP LISTENER **********
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
