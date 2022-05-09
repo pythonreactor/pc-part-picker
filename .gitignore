@@ -1,1 +1,7 @@
-restServer/node_modules
+# Local files
+.DS_Store
+*.swp
+
+# Node
+*/node_modules
+*/package-lock.json
