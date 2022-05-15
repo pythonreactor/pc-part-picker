@@ -3,25 +3,38 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title style="color: white;">Home Page</title>
+		<title style="color: white;">Login Page</title>
 	</head>
 	<body style="background-color: rgb(46, 46, 46);">
-		<p>Login Page</p>
-
-		<form>
-			<div>
+		<div>
+			<form action="" method="POST">
+				<p>Register</p>
 				<label>Email:</label>
 				<input id="email" type="email">
-			</div>
-			<div>
+				<br>
+				<label>Username:</label>
+				<input id="username" type="text">
+				<br>
 				<label>Password:</label>
-				<input type="password">
-			</div>
-			<div>
+				<input id ="password" type="text">
+				<br>
+				<button type="submit">Create Account</button>
+			</form>
+		</div>
+		<p>OR</p>
+		<div>
+			<form action="" method="POST">
+				<p>Login</p>
+				<label>Username:</label>
+				<input id="username" type="text">
+				<br>
+				<label>Password:</label>
+				<input id ="password" type="text">
+				<br>
 				<button type="submit">Login</button>
-			</div>
-		</form>
-
+			</form>
+		</div>
+	
 	</body>
 	<script type="module" src="/index.js" charset="utf-8"></script>
 </html>
