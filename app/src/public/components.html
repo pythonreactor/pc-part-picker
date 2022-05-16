@@ -3,29 +3,48 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title style="color: white;">Components Page</title>
+		<title>Components Page</title>
 	</head>
-	<body style="background-color: rgb(46, 46, 46);">
-		<h3>Components Page</h3>
 
-		<div>
-			<form>
-				<label>Select from Component List: </label>
-				<select>
-					<option value='compSelect'>Component Selection</option>
+	<body>
+		<nav>
+			<a href="/builds/">Home Page</a> |
+			<a href="/components/">Components</a>
+		</nav>
+
+		<h1>Components Page</h1>
+
+		<h3>Create Component</h3>
+		<div class="component-creation-container">
+			<form id="create-component" method="POST">
+				<label>Select the Component Type: </label>
+				<select id="component-name">
+					<option value="">Select</option>
 					<option value='caseColor'>Case Color</option>
 					<option value='powerDraw'>Power Draw</option>
-					<option value='gpu'>GPU</option>
-					<option value='cpu'>CPU</option>
-					<option value='motherBoard'>Motherboard</option>
-					<option value='memory'>Memory</option>
+					<option value='GPU'>GPU</option>
+					<option value='CPU'>CPU</option>
+					<option value='motherboard'>Motherboard</option>
+					<option value='RAM'>Memory</option>
 					<option value='storage'>Storage</option>
-				</select><br><br>
-				<label>Enter Component Type: </label>
-				<input type="text" id="compType"><br><br>
-				<button type="button" id="createComp">Create Component</button>
+				</select>
+
+				<br>
+				<br>
+
+				<label>Value: </label>
+				<input type="text" id="component-value"><br><br>
+				<button type="submit">Create Component</button>
 			</form>
 		</div>
+
+	<div class="component-container">
+		<h3>All Components</h3>
+		<div id="component-list"></div>
+	</div>
+
 	</body>
-	<script type="module" src="/index.js" charset="utf-8"></script>
+
+	<script type="module" src="/component.js" charset="utf-8"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </html>

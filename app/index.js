@@ -4,21 +4,14 @@ const app = express();
 const PORT = 3500;
 const FILES = path.join(__dirname, 'src/public/');
 
+app.use(express.static(FILES + '/static/js'));
+app.use(express.static(__dirname + 'node_modules'));
+
 // ******** ROUTES **********
 
 // Homepage
 app.get("/", (request, response) => {
     response.sendFile(FILES + "index.html");
-});
-
-// Login / Registration
-app.get("/login", (request, response) => {
-    response.sendFile(FILES + "login.html");
-});
-
-// Profile
-app.get("/profile", (request, response) => {
-    response.sendFile(FILES + "profile.html");
 });
 
 // Components
@@ -36,4 +29,3 @@ app.get("/builds", (request, response) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
