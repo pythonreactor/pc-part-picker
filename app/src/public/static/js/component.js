@@ -65,7 +65,9 @@ $(document).ready(function() {
                data: JSON.stringify({name: name, value: value}),
 
                success(data) {
-                   updateComponentData(data);
+                   updateComponentData();
+                   $("#create-component").trigger("reset");
+                   alert("Component created successfully");
                }
            });
        } else {

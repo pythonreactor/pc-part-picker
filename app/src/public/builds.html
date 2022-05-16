@@ -3,15 +3,43 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title style="color: white;">Builds Page</title>
+		<title>Builds Page</title>
 	</head>
-	<body style="background-color: rgb(46, 46, 46);">
-		<h3>Builds Page</h3>
-		<div>
-			<p>There are no builds to display, please create one</p>
-			<button type="button" id="create">Create</button>
+
+	<body>
+		<nav>
+			<a href="/">Home</a> |
+			<a href="/builds">Builds</a> |
+			<a href="/components/">Components</a> |
+			<a href="/associate/">Associations</a>
+		</nav>
+
+		<h1>Builds</h1>
+
+		<h3>Create Build</h3>
+		<div class="build-creation-container">
+			<form id="create-build" method="POST">
+				<label>Build Name: </label>
+				<input type="text" id="build-name">
+
+				<label>Build Description: </label>
+				<input type="text" id="build-description">
+
+				<br />
+				<br />
+
+				<button type="submit" id="create">Create Build</button>
+			</form>
 		</div>
 
+		<div class="build-container">
+			<h3>All Builds</h3>
+			<div id="build-list"></div>
+		</div>
+
+
 	</body>
-	<script type="module" src="/index.js" charset="utf-8"></script>
+
+	<script type="module" src="/build.js" charset="utf-8"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </html>
