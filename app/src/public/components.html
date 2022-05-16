@@ -8,85 +8,24 @@
 	<body style="background-color: rgb(46, 46, 46);">
 		<h3>Components Page</h3>
 
-		<form action="" metod="POST">
-			<div>
-				<h3>Cases:</h3>
-				<label>Choose Case Color:</label>
+		<div>
+			<form>
+				<label>Select from Component List: </label>
 				<select>
-					<option value="black">Black</option>
-					<option value="grey">Grey</option>
-					<option value="white">White</option>
-					<option value="clear">Clear</option>
-				</select><br>
-				<label>Enter Brand Name:</label>
-				<input type="text" id="caseBrand">
-			</div>
-
-			<div>
-				<h3>Power Supply:</h3>
-				<label>Choose Power Draw:</label>
-				<select>
-					<option value="nine">300W</option>
-					<option value="five">500W</option>
-					<option value="eight">800W</option>
-					<option value="nine">900W</option>
-				</select><br>
-				<label>Enter Brand Name:</label>
-				<input type="text" id="powerBrand">
-			</div>
-
-			<div>
-				<h3>GPU:</h3>
-				<label>Enter Brand Name:</label>
-				<input type="text" id="gpuBrand"><br>
-				<label>Choose Model:</label>
-				<input type="text" id="gpuModel">
-			</div>
-
-			<div>
-				<h3>CPU:</h3>
-				<label>Enter Brand Name:</label>
-				<input type="text" id="cpuBrand"><br>
-				<label>Choose Model:</label>
-				<input type="text" id="cpuModel">
-			</div>
-
-			<div>
-				<h3>Motherboard:</h3>
-				<label>Enter Brand Name:</label>
-				<input type="text" id="boardBrand"><br>
-				<label>Choose Model:</label>
-				<input type="text" id="boardModel">
-			</div>
-
-			<div>
-				<h3>RAM:</h3>
-				<label>Enter Brand Name:</label>
-				<input type="text" id="ramBrand">
-				<label>Choose Size:</label>
-				<select>
-					<option value="eight">8 GB</option>
-					<option value="sixteen">16 GB</option>
-					<option value="thirtytwo">32 GB</option>
-				</select><br>
-			</div>
-
-			<div>
-				<h3>Storage:</h3>
-				<label>Enter Brand Name:</label>
-				<input type="text" id="diskBrand">
-				<label>Choose Type:</label>
-				<select>
-					<option value="statedrive">SSD</option>
-					<option value="harddrive">HDD</option>
-				</select><br>
-				<label>Enter Amount of Storage:</label>
-				<input type="text" id="diskBrand">
-			</div>
-			<br>
-			<button type="button" id="compoSubmit">Submit Build</button>
-		</form>
-
+					<option value='compSelect'>Component Selection</option>
+					<option value='caseColor'>Case Color</option>
+					<option value='powerDraw'>Power Draw</option>
+					<option value='gpu'>GPU</option>
+					<option value='cpu'>CPU</option>
+					<option value='motherBoard'>Motherboard</option>
+					<option value='memory'>Memory</option>
+					<option value='storage'>Storage</option>
+				</select><br><br>
+				<label>Enter Component Type: </label>
+				<input type="text" id="compType"><br><br>
+				<button type="button" id="createComp">Create Component</button>
+			</form>
+		</div>
 	</body>
 	<script type="module" src="/index.js" charset="utf-8"></script>
 </html>
