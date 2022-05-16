@@ -29,10 +29,7 @@ builds.get('/detail/:id', (request, response) => {
 builds.get('/all', (request, response) => {
     getBuilds().then(
         (builds) => {
-            response.status(200).json({
-                "status": "ok",
-                "builds": builds
-            });
+            response.status(200).json(builds);
         },
         (error) => {
             response.status(500).json({
@@ -62,7 +59,7 @@ builds.post('/create', (request, response) => {
 
 builds.put('/update/:id', (request, response) => {
     // Ignore the initial promise and pull the latest version of the object
-    updateBuild(request.params.id, request.body)
+    updateBuild(request.params.id, request.body);
 
     getObjectById(request.params.id, "builds").then(
         (build) => {
@@ -82,7 +79,8 @@ builds.put('/update/:id', (request, response) => {
 
 builds.put('/update/associate-component/:id', (request, response) => {
     // Ignore the initial promise and pull the latest version of the object
-    associateComponent(request.params.id, request.body)
+    console.log(request.params.id, request.body);
+    associateComponent(request.params.id, request.body);
 
     getObjectById(request.params.id, "builds").then(
         (build) => {

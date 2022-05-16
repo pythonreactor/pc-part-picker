@@ -24,6 +24,11 @@ app.get("/builds", (request, response) => {
     response.sendFile(FILES + "builds.html");
 });
 
+// Associations
+app.get("/associate", (request, response) => {
+    response.sendFile(FILES + "associations.html");
+});
+
 // ******** APP LISTENER **********
 
 app.listen(PORT, () => {

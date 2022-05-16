@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Association Page</title>
+    </head>
+
+    <body>
+        <nav>
+            <a href="/">Home</a> |
+            <a href="/builds">Builds</a> |
+            <a href="/components/">Components</a> |
+            <a href="/associate/">Associations</a>
+        </nav>
+
+        <h1>Associate Components to a Build</h1>
+
+        <h3>Create Associations</h3>
+        <div class="build-creation-container">
+            <form id="create-association" method="POST">
+                <label>Build Name: </label>
+                <select id="build-name-select">
+                    <option value="">Select</option>
+                </select>
+
+                <br />
+                <br />
+
+                <label>Choose Associations: </label>
+
+                <br />
+                <br />
+
+                <div id="association-select-deck"></div>
+
+                <button type="submit" id="create">Create Associations</button>
+            </form>
+        </div>
+
+</body>
+
+<script type="module" src="/associate.js" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</html>

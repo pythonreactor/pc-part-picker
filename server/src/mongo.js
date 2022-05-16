@@ -97,7 +97,10 @@ export const associateComponent = ((buildId, componentData, coll='builds') => {
                 const db = client.db('final-project');
                 const collection = db.collection(coll);
 
-                collection.updateOne({_id: new mongo.ObjectID(buildId)}, {$addToSet: {"components": componentData}}, (err, result) => {
+                collection.updateOne(
+                    {_id: new mongo.ObjectID(buildId)},
+                    {$set: {"components": componentData}},
+                    (err, result) => {
                     if (err) {
                         reject(err);
                     } else {
