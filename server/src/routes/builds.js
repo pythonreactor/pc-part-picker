@@ -1,9 +1,15 @@
 import { Router } from 'express';
-import { getBuilds, createBuild, updateBuild, getObjectById } from "../mongo.js";
+import {
+    getBuilds,
+    createBuild,
+    updateBuild,
+    associateComponent,
+    getObjectById
+} from "../mongo.js";
 
 const builds = Router();
 
-builds.get('/:id', (request, response) => {
+builds.get('/detail/:id', (request, response) => {
     getObjectById(request.params.id, "builds").then(
         (build) => {
             response.status(200).json({
@@ -57,6 +63,26 @@ builds.post('/create', (request, response) => {
 builds.put('/update/:id', (request, response) => {
     // Ignore the initial promise and pull the latest version of the object
     updateBuild(request.params.id, request.body)
+
+    getObjectById(request.params.id, "builds").then(
+        (build) => {
+            response.status(200).json({
+                "status": "ok",
+                "build": build
+            });
+        },
+        (error) => {
+            response.status(500).json({
+                "status": "error",
+                "message": error
+            });
+        }
+    );
+});
+
+builds.put('/update/associate-component/:id', (request, response) => {
+    // Ignore the initial promise and pull the latest version of the object
+    associateComponent(request.params.id, request.body)
 
     getObjectById(request.params.id, "builds").then(
         (build) => {

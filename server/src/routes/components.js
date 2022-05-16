@@ -3,7 +3,7 @@ import { getComponents, createComponent, getObjectById } from "../mongo.js";
 
 const components = Router();
 
-components.get('/:id', (request, response) => {
+components.get('/detail/:id', (request, response) => {
     getObjectById(request.params.id, "components").then(
         (component) => {
             response.status(200).json({
@@ -23,7 +23,6 @@ components.get('/:id', (request, response) => {
 components.get('/all', (request, response) => {
     getComponents().then(
         (components) => {
-            console.log(components);
             response.json({
                 "status": "ok",
                 "caseColors": components.filter(component => component.name === "caseColor"),

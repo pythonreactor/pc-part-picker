@@ -85,6 +85,31 @@ export const updateBuild = ((buildId, buildData, coll='builds') => {
     });
 });
 
+export const associateComponent = ((buildId, componentData, coll='builds') => {
+    // Convert all IDs into MongoDB ObjectIDs
+    componentData.forEach( (obj) => {obj._id = new mongo.ObjectID(obj._id)});
+
+    return new Promise((resolve, reject) => {
+        mongoClient.connect(mongoUrl, (err, client) => {
+            if (err) {
+                reject(err);
+            } else {
+                const db = client.db('final-project');
+                const collection = db.collection(coll);
+
+                collection.updateOne({_id: new mongo.ObjectID(buildId)}, {$addToSet: {"components": componentData}}, (err, result) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        client.close();
+                        resolve(result);
+                    }
+                });
+            }
+        });
+    });
+});
+
 export const getComponents = ((coll='components') => {
     return new Promise((resolve, reject) => {
         mongoClient.connect(mongoUrl, (err, client) => {
