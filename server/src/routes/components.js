@@ -7,7 +7,6 @@ components.get('/detail/:id', (request, response) => {
     getObjectById(request.params.id, "components").then(
         (component) => {
             response.status(200).json({
-                "status": "ok",
                 "component": component
             });
         },
@@ -24,7 +23,6 @@ components.get('/all', (request, response) => {
     getComponents().then(
         (components) => {
             response.json({
-                "status": "ok",
                 "caseColors": components.filter(component => component.name === "caseColor"),
                 "powerDraws": components.filter(component => component.name === "powerDraw"),
                 "gpus": components.filter(component => component.name === "GPU"),
@@ -47,7 +45,6 @@ components.post('/create', (request, response) => {
     createComponent(request.body).then(
         (component) => {
             response.status(200).json({
-                "status": "ok",
                 "componentId": component.insertedId
             });
         },

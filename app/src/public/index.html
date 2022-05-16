@@ -3,24 +3,18 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title style="color: white;">Home Page</title>
+		<title>Home Page</title>
 	</head>
-	<body style="background-color: rgb(46, 46, 46);">
-		<p>Home Page</p>
-		<div>
-			<div>
-				<a href="login">Login or Register</a>
-			</div>
-			<div>
-				<a href="profile">Profile</a>		
-			</div>
-			<div>
-				<a href="builds">Builds</a>
-			</div>
-			<div>
-				<a href="components">Components</a>
-			</div>
-		</div>
+
+	<body>
+		<nav>
+			<a href="/builds/">Home Page</a> |
+			<a href="/components/">Components</a>
+		</nav>
+		<h3>Home Page</h3>
+
+		<div id="build-container"></div>
 	</body>
-	<script type="module" src="/index.js" charset="utf-8"></script>
+
+	<script type="module" src="./static/js/home.js" charset="utf-8"></script>
 </html>

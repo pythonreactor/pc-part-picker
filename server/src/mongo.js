@@ -50,7 +50,7 @@ export const createBuild = ((buildData, coll='builds') => {
                 // Build the new build object
                 const build = new Object(buildData);
 
-                collection.insertOne(build, (err, result) => {
+                collection.updateOne({name: build.name}, {$set: build}, {upsert: true}, (err, result) => {
                     if (err) {
                         reject(err);
                     } else {
@@ -150,7 +150,7 @@ export const createComponent = ((componentData, coll='components') => {
                 // Build the new build object
                 const component = new Object(componentData);
 
-                collection.insertOne(component, (err, result) => {
+                collection.updateOne({value: component.value}, {$set: component}, {upsert: true}, (err, result) => {
                     if (err) {
                         reject(err);
                     } else {
