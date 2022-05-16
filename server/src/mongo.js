@@ -63,6 +63,28 @@ export const createBuild = ((buildData, coll='builds') => {
     });
 });
 
+export const updateBuild = ((buildId, buildData, coll='builds') => {
+    return new Promise((resolve, reject) => {
+        mongoClient.connect(mongoUrl, (err, client) => {
+            if (err) {
+                reject(err);
+            } else {
+                const db = client.db('final-project');
+                const collection = db.collection(coll);
+
+                collection.updateOne({_id: new mongo.ObjectID(buildId)}, {$set: buildData}, (err, result) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        client.close();
+                        resolve(result);
+                    }
+                });
+            }
+        });
+    });
+});
+
 export const getComponents = ((coll='components') => {
     return new Promise((resolve, reject) => {
         mongoClient.connect(mongoUrl, (err, client) => {
