@@ -56,6 +56,10 @@ const updateBuildData = (() => {
                     })
                     : buildContainer.append('<p>No components associated</p>');
 
+                // Add a delete button for each available build
+                buildContainer.append(
+                    `<button name="build-deletion" type="submit" value=${buildData._id}>Delete Build</button>`,
+                );
                 buildContainer.append('<hr />');
             });
         },
@@ -91,4 +95,22 @@ $(document).ready(function() {
             alert("Please fill out all fields");
         }
     });
+});
+
+// Capture delete button click and send the appropriate request to the server
+$(document).on("click", "button[name='build-deletion']", function() {
+    const buildId = $(this).val();
+
+    if (buildId) {
+        $.ajax({
+            type: "DELETE",
+            contentType: "application/json",
+            url: `http://localhost:3501/api/v1/build/delete/${buildId}`,
+
+            success(data) {
+                updateBuildData();
+                alert("Build deleted successfully");
+            }
+        });
+    }
 });
