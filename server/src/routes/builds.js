@@ -3,6 +3,7 @@ import {
     getBuilds,
     createBuild,
     updateBuild,
+    deleteBuild,
     associateComponent,
     getObjectById
 } from "../mongo.js";
@@ -43,7 +44,7 @@ builds.get('/all', (request, response) => {
 builds.post('/create', (request, response) => {
     createBuild(request.body).then(
         (build) => {
-            response.status(200).json({
+            response.status(201).json({
                 "status": "ok",
                 "buildId": build.insertedId
             });
@@ -63,7 +64,7 @@ builds.put('/update/:id', (request, response) => {
 
     getObjectById(request.params.id, "builds").then(
         (build) => {
-            response.status(200).json({
+            response.status(204).json({
                 "status": "ok",
                 "build": build
             });
@@ -84,10 +85,24 @@ builds.put('/update/associate-component/:id', (request, response) => {
 
     getObjectById(request.params.id, "builds").then(
         (build) => {
-            response.status(200).json({
+            response.status(204).json({
                 "status": "ok",
                 "build": build
             });
+        },
+        (error) => {
+            response.status(500).json({
+                "status": "error",
+                "message": error
+            });
+        }
+    );
+});
+
+builds.delete('/delete/:id', (request, response) => {
+    deleteBuild(request.params.id).then(
+        (build) => {
+            response.status(204).json({"status": "ok"});
         },
         (error) => {
             response.status(500).json({

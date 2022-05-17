@@ -1,5 +1,10 @@
 import { Router } from 'express';
-import { getComponents, createComponent, getObjectById } from "../mongo.js";
+import {
+    getComponents,
+    createComponent,
+    deleteComponent,
+    getObjectById
+} from "../mongo.js";
 
 const components = Router();
 
@@ -44,9 +49,23 @@ components.get('/all', (request, response) => {
 components.post('/create', (request, response) => {
     createComponent(request.body).then(
         (component) => {
-            response.status(200).json({
+            response.status(201).json({
                 "componentId": component.insertedId
             });
+        },
+        (error) => {
+            response.status(500).json({
+                "status": "error",
+                "message": error
+            });
+        }
+    );
+});
+
+components.delete('/delete/:id', (request, response) => {
+    deleteComponent(request.params.id).then(
+        (component) => {
+            response.status(204).json({"status": "ok"});
         },
         (error) => {
             response.status(500).json({

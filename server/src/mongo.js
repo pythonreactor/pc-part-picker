@@ -85,6 +85,28 @@ export const updateBuild = ((buildId, buildData, coll='builds') => {
     });
 });
 
+export const deleteBuild = ((buildId, coll='builds') => {
+    return new Promise((resolve, reject) => {
+        mongoClient.connect(mongoUrl, (err, client) => {
+            if (err) {
+                reject(err);
+            } else {
+                const db = client.db('final-project');
+                const collection = db.collection(coll);
+
+                collection.deleteOne({_id: new mongo.ObjectID(buildId)}, (err, result) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        client.close();
+                        resolve(result);
+                    }
+                });
+            }
+        });
+    });
+});
+
 export const associateComponent = ((buildId, componentData, coll='builds') => {
     // Convert all IDs into MongoDB ObjectIDs
     componentData.forEach( (obj) => {obj._id = new mongo.ObjectID(obj._id)});
@@ -154,6 +176,28 @@ export const createComponent = ((componentData, coll='components') => {
                 const component = new Object(componentData);
 
                 collection.updateOne({value: component.value}, {$set: component}, {upsert: true}, (err, result) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        client.close();
+                        resolve(result);
+                    }
+                });
+            }
+        });
+    });
+});
+
+export const deleteComponent = ((componentId, coll='components') => {
+    return new Promise((resolve, reject) => {
+        mongoClient.connect(mongoUrl, (err, client) => {
+            if (err) {
+                reject(err);
+            } else {
+                const db = client.db('final-project');
+                const collection = db.collection(coll);
+
+                collection.deleteOne({_id: new mongo.ObjectID(componentId)}, (err, result) => {
                     if (err) {
                         reject(err);
                     } else {
